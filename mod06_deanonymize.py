@@ -22,6 +22,7 @@ def link_records(anon_df:pd.DataFrame, aux_df:pd.DataFrame):
     anon_df = anon_df.drop_duplicates(subset=keys)
     aux_df = aux_df.drop_duplicates(subset=keys)
     merged = anon_df.merge(aux_df, on=keys, how='inner')
+    merged.rename(columns={'name':'matched_name'})
     return merged.drop(columns=keys) 
 
 
